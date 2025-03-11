@@ -44,7 +44,7 @@ python test.py
 ## Evaluation Metrics
 We also provide evaluation metrics for testing fused images. If you want to obtain the fusion results in our paper, please run **main.m** directly from the Objective-evaluation-for-image-fusion folder.
 
-![](https://github.com/MorvanLi/NSNPFuse-MFIF/tree/main/figs/evaluation.png)
+![](https://github.com/MorvanLi/NSNPFuse-MFIF/blob/main/figs/evaluation.png)
 
 
 You can modify the `fused_path` to test the results on different datasets. For example, to test on MFFW, set `fused_path = './results/MFFW/'`, or to test on MFI-WHU, set `fused_path = './results/MFI-WHU/'`.
