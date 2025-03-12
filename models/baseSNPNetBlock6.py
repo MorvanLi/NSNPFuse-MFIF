@@ -17,7 +17,7 @@ import torch.nn.functional as F
 # import scipy.io as sio
 import math
 from PIL import Image
-
+from spikingjelly.clock_driven import base, surrogate
 
 class Fconv_PCA(nn.Module):
 
@@ -571,6 +571,47 @@ def GetBasis(sizeP, tranNum=8, inP=None):
     BasisS = np.reshape(BasisS, [sizeP, sizeP, tranNum, inP * inP]) * np.expand_dims(Mask, 3)
     return torch.FloatTensor(BasisC), torch.FloatTensor(BasisS)
 
+
+
+###
+class SNPNeuron(base.MemoryModule):
+    def __init__(self, tau_u: float, tau_e: float,
+                 in_channels, out_channels: int, kernel_size: Tuple[int, ...], stride: Tuple[int, ...],
+                 padding: Tuple[int, ...],
+                 batch_size: int, shape: Tuple[int, ...],
+                 local: bool = True, shared: bool = True, self_feedback: bool = True, multi_channel: bool = False,
+                 learnable: bool = True,
+                 linking: bool = True, encoding: bool = True):
+
+        super().__init__()
+
+        if local and shared and self_feedback and not multi_channel and learnable:
+            self.op = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, bias=False)  # 参数应该从外面传进来，暂时这样写
+        elif not local and not shared and self_feedback and not multi_channel and learnable:
+            self.op = nn.Linear(*shape, *shape, bias=False)
+
+        self.linking = linking
+        self.encoding = encoding
+
+        self.tau_u = nn.Parameter(1 / torch.tensor([tau_u], dtype=torch.float))
+
+        self.tau_e = nn.Parameter(1 / torch.tensor([tau_e], dtype=torch.float))
+
+        self.surrogate_function = SG.apply
+        # self.surrogate_function = surrogate.ATan()
+
+        self.register_memory('u', torch.zeros(batch_size, *shape))
+        self.register_memory('tau', torch.ones(batch_size, *shape))
+        self.register_memory('p', torch.zeros(batch_size, *shape))
+
+    def forward(self, x: torch.Tensor):
+
+        self.u = self.u * (1.0 - self.tau_u) + x + self.op(self.p)
+
+        self.tau = self.tau * (1.0 - self.tau_e) + self.p
+
+        self.p = self.surrogate_function(self.u - self.tau, 1.0)
+        return self.p
 
 
 class ConvSNP(nn.Module):

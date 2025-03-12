@@ -64,3 +64,27 @@ In the salient object detection task, we use [U2Net](https://github.com/xuebinqi
 In the object detection task, we use [YOLOv5](https://github.com/ultralytics/yolov5) to evaluate the effectiveness of our method.
 
 Note that the dataset used to perform object detection is [Road-MF](https://github.com/ixilai/SAMF), which requires multi-focus image fusion before object detection can be performed. **This dataset is in the sources folder.** In addition, the Road-MF dataset lacks category labels and therefore can only be evaluated qualitatively.
+
+
+
+## ⚙ Comparison Methods
+
+We give all the comparative experimental SOTA methods in this paper:
+
+- [IFCNN](https://github.com/uzeful/IFCNN)
+- [PMGI](https://github.com/HaoZhang1018/PMGI_AAAI2020)
+- [CU-Net](https://github.com/cindydeng1991/TPAMI-CU-Net)
+- [U2Fusion](https://github.com/hanna-xu/U2Fusion)
+- [MFF-GAN](https://github.com/HaoZhang1018/MFF-GAN)
+- [SDNet](https://github.com/HaoZhang1018/SDNet)
+- [SwinFusion](https://github.com/Linfeng-Tang/SwinFusion)
+- [DeFusion](https://github.com/erfect2020/DecompositionForFusion)
+- [ZMFF](https://github.com/junjun-jiang/ZMFF)
+- [MGDN](https://github.com/Guanys-dar/MGDN)
+- [MUFusion](https://github.com/AWCXV/MUFusion)
+- [PSLPT](https://github.com/wwhappylife/A-general-image-fusion-framework-using-multi-task-semi-supervised-learning)
+- [DB-MFIF](https://github.com/Zancelot/DB-MFIF)
+- [DeepM2CDL](https://github.com/JingyiXu404/TPAMI-DeepM2CDL)
+- [TC-MoA](https://github.com/YangSun22/TC-MoA)
+
+We did not upload the experimental results data of all the comparison methods because they were too large. If any researcher needs the results of these comparison methods, please contact me via email: morvanli@stu.xjtu.edu.cn.
