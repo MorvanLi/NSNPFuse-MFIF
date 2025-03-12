@@ -18,20 +18,20 @@ class ConvSNP(nn.Module):
             self.convSNP = nn.Sequential(
                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation,
                           dilation=dilation),
-                nn.Sigmoid(),  # 非线性激活函数
+                nn.Sigmoid(),
             )
         else:
             if use:
                 self.convSNP = nn.Sequential(
                     fn.Fconv_PCA(kSize, Cin, G, tranNum=tranNum, inP=kSize, padding=(kSize - 1) // 2, ifIni=ifIni,
                                  Smooth=Smooth),
-                    nn.ReLU(),  # 非线性激活函数
+                    nn.ReLU(),
                 )
             else:
                 self.convSNP = nn.Sequential(
                     nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation,
                               dilation=dilation),
-                    nn.ReLU(),  # 非线性激活函数
+                    nn.ReLU(),  
                 )
 
 

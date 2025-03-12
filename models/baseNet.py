@@ -17,13 +17,13 @@ class ConvSNP(nn.Module):
         if use:
             self.convSNP = nn.Sequential(
                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation, dilation=dilation),
-                nn.ReLU(),  # 非线性激活函数
+                nn.ReLU(),
             )
         else:
             self.convSNP = nn.Sequential(
                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation,
                           dilation=dilation),
-                nn.Sigmoid(),  # 非线性激活函数
+                nn.Sigmoid(), 
             )
 
     def forward(self, x):

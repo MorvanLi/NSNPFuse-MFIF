@@ -15,12 +15,12 @@ class ConvSNP(nn.Module):
         ifIni = ifIni
         if use:
             self.convSNP = nn.Sequential(
-                nn.ReLU(),  # 非线性激活函数
+                nn.ReLU(),
                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation, dilation=dilation),
             )
         else:
             self.convSNP = nn.Sequential(
-                nn.ReLU(),  # 非线性激活函数
+                nn.ReLU(),
                 fn.Fconv_PCA(kSize, Cin, G, tranNum=tranNum, inP=kSize, padding=(kSize - 1) // 2, ifIni=ifIni,
                              Smooth=Smooth),
             )
@@ -32,7 +32,6 @@ class ConvSNP(nn.Module):
         return out
 
     def clip_lambda(self):
-        # 强制lambda参数位于 [0, 1] 范围内
         self.lambda_param.data = torch.clamp(self.lambda_param.data, 0, 1)
 
 

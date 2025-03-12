@@ -9,27 +9,27 @@
 import torch.nn as nn
 import torch
 import F_conv as fn
-class ConvSNP(nn.Module):
-    def __init__(self, inChannels, growRate, kSize=5, tranNum=8, ifIni=0, Smooth=False, use=False, dilation=1):
-        super(ConvSNP, self).__init__()
-        Cin = inChannels
-        G = growRate
-        ifIni = ifIni
-        if use:
-            self.convSNP = nn.Sequential(
-                nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation, dilation=dilation),
-                nn.ReLU(),  # 非线性激活函数
-            )
-        else:
-            self.convSNP = nn.Sequential(
-                nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation,
-                          dilation=dilation),
-                nn.Sigmoid(),  # 非线性激活函数
-            )
-
-    def forward(self, x):
-        out = self.convSNP(x)
-        return out
+# class ConvSNP(nn.Module):
+#     def __init__(self, inChannels, growRate, kSize=5, tranNum=8, ifIni=0, Smooth=False, use=False, dilation=1):
+#         super(ConvSNP, self).__init__()
+#         Cin = inChannels
+#         G = growRate
+#         ifIni = ifIni
+#         if use:
+#             self.convSNP = nn.Sequential(
+#                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation, dilation=dilation),
+#                 nn.ReLU(),
+#             )
+#         else:
+#             self.convSNP = nn.Sequential(
+#                 nn.Conv2d(inChannels, growRate, kernel_size=kSize, padding=(kSize - 1) // 2 * dilation,
+#                           dilation=dilation),
+#                 nn.Sigmoid(),
+#             )
+#
+#     def forward(self, x):
+#         out = self.convSNP(x)
+#         return out
 
 
 class SpatialAttention(nn.Module):
