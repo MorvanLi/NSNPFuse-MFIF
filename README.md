@@ -63,4 +63,4 @@ In the salient object detection task, we use [U2Net](https://github.com/xuebinqi
 
 In the object detection task, we use [YOLOv5](https://github.com/ultralytics/yolov5) to evaluate the effectiveness of our method.
 
-Note that the dataset used to perform target detection is [Road-MF](https://github.com/ixilai/SAMF), which requires multi-focus image fusion before object detection can be performed. **This dataset is in the sources folder.** In addition, the Road-MF dataset lacks category labels and therefore can only be evaluated qualitatively.
+Note that the dataset used to perform object detection is [Road-MF](https://github.com/ixilai/SAMF), which requires multi-focus image fusion before object detection can be performed. **This dataset is in the sources folder.** In addition, the Road-MF dataset lacks category labels and therefore can only be evaluated qualitatively.
