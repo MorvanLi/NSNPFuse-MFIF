@@ -36,7 +36,7 @@ and the trained model is available in ``'./weights/'``.
 
 **3. NSNPFuse Testing**
 
-The test datasets used in the paper have been stored in ``'./sources/Lytro'`` for Lytro, ``'./test_img/MFFW'`` for MFFW, ``'./sources/MFI-WHU'``  for MFI-WHU. 
+The test datasets used in the paper have been stored in ``'./sources/Lytro'`` for Lytro, ``'./test_img/MFFW'`` for MFFW, ``'./sources/MFI-WHU'``  for MFI-WHU,``'./sources/Road-MF'``  for Road-MF. 
 
 **All fused images for the three MFIF datasets in the results folder .**
 
@@ -50,7 +50,7 @@ We also provide evaluation metrics for testing fused images. If you want to obta
 ![](https://github.com/MorvanLi/NSNPFuse-MFIF/blob/main/figs/evaluation.png)
 
 
-You can modify the `fused_path` to test the results on different datasets. For example, to test on MFFW, set `fused_path = './results/MFFW/'`, or to test on MFI-WHU, set `fused_path = './results/MFI-WHU/'`.
+You can modify the `fused_path` to test the results on different datasets. For example, to test on MFFW, set `fused_path = './results/MFFW/'`, or to test on MFI-WHU, set `fused_path = './results/MFI-WHU/'`, or to test on Road-MF, set `fused_path = './results/Road-MF/'`.
 
 
 
